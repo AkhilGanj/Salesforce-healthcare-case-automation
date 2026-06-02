@@ -1,0 +1,7 @@
+</> Javascript
+
+import { LightningElement, api } from 'lwc';
+
+export default class MemberCaseDashboard extends LightningElement {
+    @api openCases;
+}
