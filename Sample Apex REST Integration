@@ -1,0 +1,17 @@
+</>  apex
+public with sharing class MemberAPIService {
+
+    public static void syncMember(String memberId){
+
+        HttpRequest req = new HttpRequest();
+        req.setEndpoint('https://api.healthcare.com/member/' + memberId);
+        req.setMethod('GET');
+
+        Http http = new Http();
+        HttpResponse res = http.send(req);
+
+        if(res.getStatusCode() == 200){
+            System.debug('Member Synced: ' + res.getBody());
+        }
+    }
+}
