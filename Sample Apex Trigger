@@ -1,0 +1,14 @@
+</>apex
+trigger CaseEscalationTrigger on Case (before insert, before update) {
+
+    for(Case c : Trigger.new){
+
+        if(c.Priority == 'High' &&
+           c.Status != 'Closed' &&
+           c.SLA_Breached__c == true){
+
+            c.OwnerId = '005XXXXXXXXXXXX'; // Escalation Queue/User
+            c.Escalated__c = true;
+        }
+    }
+}
